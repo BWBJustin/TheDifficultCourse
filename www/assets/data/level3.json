@@ -1,0 +1,23 @@
+{
+    "blocks": [],
+    "circles": [],
+    "saws": [],
+    "dialogue": [
+        { "speaking": "timmy", "text": "Well well well, Joshua..." },
+        { "speaking": "timmy", "text": "We meet again at last." },
+        { "speaking": "joshua", "text": "you suck" },
+        { "speaking": "timmy", "text": "Is this so, Joshua?" },
+        { "speaking": "timmy", "text": "I must say otherwise." },
+        { "speaking": "joshua", "text": ":v" },
+        { "speaking": "timmy", "text": "You leave me no choice but to\nuse my primal attack." },
+        { "speaking": "timmy", "text": "Any last words?" },
+        { "speaking": "joshua", "text": "that was legitness" },
+        { "speaking": "joshua", "text": "[EVENT]" },
+        { "speaking": "timmy", "text": "WHAT THE..." },
+        { "speaking": "timmy", "text": "HOW????" },
+        { "speaking": "joshua", "text": "ur bad xddddd" },
+        { "speaking": "timmy", "text": "You may have defeated me\nthis time," },
+        { "speaking": "timmy", "text": "but you will not next time." },
+        { "speaking": "timmy", "text": "Toodles..." }
+    ]
+}
