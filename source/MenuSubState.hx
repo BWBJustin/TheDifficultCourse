@@ -1,6 +1,5 @@
 package;
 
-import flixel.FlxG;
 import flixel.FlxSubState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -37,7 +36,7 @@ class MenuSubState extends FlxSubState {
             if (menuItem.ID == menuItems.members[curSelected].ID)
                 menuItem.color = 0xFFFFFFFF;
             else
-                menuItem.color = 0xFF404040;
+                menuItem.color = 0xFFA0A0A0;
         });
     }
 }

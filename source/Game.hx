@@ -1,9 +1,12 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
+import openfl.display.Bitmap;
+import openfl.display.Sprite;
 
 class Game {
-    public static var version: String = "v1.0.0";
+    public static var version: String = "v1.1.0";
     public static var outdated: Bool = false;
 
     public static function initSave() {
@@ -116,64 +119,64 @@ class Controls {
 class Options {
     public static var fpsCounter(get, set): Bool;
 
-	static function get_fpsCounter() {
+    static function get_fpsCounter() {
         return FlxG.save.data.fpsCounter;
-	}
+    }
 
-	static function set_fpsCounter(value: Bool) {
+    static function set_fpsCounter(value: Bool) {
         FlxG.save.data.fpsCounter = value;
         if (Main.fpsCounter != null)
         Main.fpsCounter.visible = value;
         FlxG.save.flush();
         return value;
-	}
+    }
 
     public static var antialiasing(get, set): Bool;
 
-	static function get_antialiasing() {
+    static function get_antialiasing() {
         return FlxG.save.data.antialiasing;
-	}
+    }
 
-	static function set_antialiasing(value: Bool) {
+    static function set_antialiasing(value: Bool) {
         FlxG.save.data.antialiasing = value;
         FlxG.save.flush();
         return value;
-	}
+    }
 
     public static var music(get, set): Int;
 
-	static function get_music() {
+    static function get_music() {
         return FlxG.save.data.music;
-	}
+    }
 
-	static function set_music(value: Int) {
+    static function set_music(value: Int) {
         FlxG.save.data.music = value;
         if (FlxG.sound.music != null)
             FlxG.sound.music.volume = value / 100;
         FlxG.save.flush();
         return value;
-	}
+    }
 
     public static var sounds(get, set): Int;
 
-	static function get_sounds() {
+    static function get_sounds() {
         return FlxG.save.data.sounds;
-	}
+    }
 
-	static function set_sounds(value: Int) {
+    static function set_sounds(value: Int) {
         FlxG.save.data.sounds = value;
         FlxG.save.flush();
         return value;
-	}
+    }
 
     #if desktop
     public static var fpsCap(get, set): Int;
 
-	static function get_fpsCap() {
+    static function get_fpsCap() {
         return FlxG.save.data.fpsCap;
-	}
+    }
 
-	static function set_fpsCap(value: Int) {
+    static function set_fpsCap(value: Int) {
         var lessThan = value < FlxG.save.data.fpsCap;
         FlxG.save.data.fpsCap = value;
         if (lessThan) {
@@ -185,6 +188,29 @@ class Options {
         }
         FlxG.save.flush();
         return value;
-	}
+    }
     #end
+}
+
+// direct copy of grand9k lfg
+class Version extends Sprite {
+    public function new(X: Float, Y: Float) {
+        super();
+        x = X;
+        y = Y;
+
+        var lastSprite: FlxSprite = null;
+        for (character in (Game.version + (Game.outdated ? " O" : "")).split("")) {
+            lastSprite = new FlxSprite(lastSprite != null ? lastSprite.x + lastSprite.width + 5 : 0);
+            if (character == " ")
+                lastSprite.makeGraphic(5, 35, 0x00000000);
+            else
+                lastSprite.loadGraphic("assets/images/version/" + StringTools.hex(character.charCodeAt(0)).toLowerCase() + ".png");
+            lastSprite.antialiasing = Game.Options.antialiasing;
+            var bitmap = new Bitmap(lastSprite.pixels);
+            bitmap.x = lastSprite.x;
+            bitmap.y = lastSprite.y;
+            addChild(bitmap);
+        }
+    }
 }

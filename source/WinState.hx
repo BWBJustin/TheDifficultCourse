@@ -61,6 +61,9 @@ class WinState extends FlxState {
             #else
             FlxG.sound.playMusic(AssetPaths.menuTheme__mp3, Game.Options.music / 100);
             #end
+            Main.resetWorms();
+            Main.worm1.visible = true;
+            Main.worm2.visible = true;
             FlxG.switchState(new MainMenuState());
         }
 

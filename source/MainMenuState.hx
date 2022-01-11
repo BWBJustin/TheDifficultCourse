@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import haxe.Timer;
+import openfl.display.Bitmap;
 
 class MainMenuState extends MenuState
 {
@@ -12,7 +13,11 @@ class MainMenuState extends MenuState
     {
         super.create();
 
-        add(new Grand9K(5, 680, Game.version + (Game.outdated ? " (Outdated)" : ""), 0.5));
+        if (Main.version == null) {
+            Main.version = new Game.Version(5, 680);
+            Main.instance.addChild(Main.version);
+        } else
+            Main.version.visible = true;
 
         var logo = new FlxSprite(0, 26).loadGraphic(AssetPaths.logo__png);
         logo.antialiasing = Game.Options.antialiasing;
@@ -64,10 +69,10 @@ class MainMenuState extends MenuState
         }
     }
 
-	function set_chooseGamemode(value: Bool) {
+    function set_chooseGamemode(value: Bool) {
         curSelected = 0;
         reloadMenuItems(value ? ["Normal Mode", "Challenge Mode"] : ["Play Game", "Options", "Credits"]);
 
-		return chooseGamemode = value;
-	}
+        return chooseGamemode = value;
+    }
 }

@@ -115,6 +115,12 @@ class PlayState extends FlxState {
         RichPresence.changePresence(challenge ? "Challenge Mode" : "Normal Mode", "Level " + levelIndex);
         #end
 
+        #if !SKIP_MENU
+        Main.version.visible = false;
+        #end
+        Main.worm1.visible = false;
+        Main.worm2.visible = false;
+
         FlxTween.tween(bg, { x: 0 }, 0.5);
         FlxTween.tween(player, { x: 200 }, 0.5);
         FlxTween.tween(end, { x: 1120 }, 0.5);

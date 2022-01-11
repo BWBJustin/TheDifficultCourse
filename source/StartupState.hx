@@ -11,7 +11,7 @@ class StartupState extends FlxState {
 
         Game.initSave();
 
-        var http = new Http("https://raw.githubusercontent.com/BWBJustin/TheDifficultCourse/main/version.txt");
+        var http = new Http("https://raw.githubusercontent.com/BWBJustin/TheDifficultCourse/master/version.txt");
         http.onData = data -> {
             if (data != Game.version)
                 Game.outdated = true;
@@ -35,8 +35,12 @@ class StartupState extends FlxState {
         #end
 
         #if SKIP_MENU
+        Main.worm1.visible = false;
+        Main.worm2.visible = false;
         FlxG.switchState(new PlayState());
         #elseif SKIP_GAME
+        Main.worm1.visible = false;
+        Main.worm2.visible = false;
         FlxG.switchState(new WinState());
         #else
         FlxG.switchState(new MainMenuState());

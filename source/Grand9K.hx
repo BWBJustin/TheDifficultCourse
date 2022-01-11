@@ -26,11 +26,12 @@ class Grand9K extends FlxSpriteGroup {
         var lastSprite: FlxSprite = null;
         var lines = value.split("\n");
         for (i in 0...lines.length) {
-            var splitText = lines[i].split("");
-            for (j in 0...splitText.length) {
-                var character = splitText[j];
+            for (character in lines[i].split("")) {
                 lastSprite = new FlxSprite(lastSprite != null ? lastSprite.x + lastSprite.width - x + 10 * size : 0, i * 90 * size);
-                lastSprite.loadGraphic("assets/images/grand9k/" + StringTools.hex(character.charCodeAt(0)).toLowerCase() + ".png");
+                if (character == " ")
+                    lastSprite.makeGraphic(10, 70, 0x00000000);
+                else
+                    lastSprite.loadGraphic("assets/images/grand9k/" + StringTools.hex(character.charCodeAt(0)).toLowerCase() + ".png");
                 lastSprite.antialiasing = Game.Options.antialiasing;
                 lastSprite.setGraphicSize(Std.int(lastSprite.width * size));
                 lastSprite.updateHitbox();

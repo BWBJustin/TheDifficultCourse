@@ -40,6 +40,9 @@ class PauseSubState extends MenuSubState {
                     close();
                 case 3:
                     PlayState.levelIndex = 1;
+                    Main.resetWorms();
+                    Main.worm1.visible = true;
+                    Main.worm2.visible = true;
                     FlxG.switchState(new MainMenuState());
             }
         }
