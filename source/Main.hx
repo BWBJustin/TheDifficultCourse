@@ -35,5 +35,6 @@ class Main extends Sprite
         worm2 = new Worm(1120, 700, true);
         instance.addChild(worm2);
         instance.addChild(fpsCounter);
+        instance.addChild(version);
     }
 }

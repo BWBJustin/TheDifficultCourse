@@ -6,7 +6,7 @@ import openfl.display.Bitmap;
 import openfl.display.Sprite;
 
 class Game {
-    public static var version: String = "v1.1.0";
+    public static var version: String = "v1.1.1";
     public static var outdated: Bool = false;
 
     public static function initSave() {
