@@ -12,10 +12,7 @@ class StartupState extends FlxState {
         Game.initSave();
 
         var http = new Http("https://raw.githubusercontent.com/BWBJustin/TheDifficultCourse/master/version.txt");
-        http.onData = data -> {
-            if (data != Game.version)
-                Game.outdated = true;
-        }
+        http.onData = data -> Game.outdated = data != Game.version;
         
         http.request();
 

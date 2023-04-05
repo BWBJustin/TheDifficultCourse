@@ -32,11 +32,6 @@ class MenuSubState extends FlxSubState {
         if (curSelected >= menuItems.length)
             curSelected = 0;
 
-        menuItems.forEach(menuItem -> {
-            if (menuItem.ID == menuItems.members[curSelected].ID)
-                menuItem.color = 0xFFFFFFFF;
-            else
-                menuItem.color = 0xFFA0A0A0;
-        });
+        menuItems.forEach(menuItem -> menuItem.color = menuItem.ID == menuItems.members[curSelected].ID ? 0xFFFFFFFF : 0xFFA0A0A0);
     }
 }

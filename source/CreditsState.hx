@@ -7,8 +7,8 @@ class CreditsState extends MenuState
     var menuItemNames: Array<String> = [
         "Developer", "BWBJustin",
         "Original Game", "Daxylitz",
-        "Menu Theme (Raigon50)", "Native Faith (Kero Club Mix)",
-        "Ending Song (JPB)", "High"
+        "Menu Theme", "Raigon50",
+        "Ending Song", "JPB"
     ];
 
     override public function create()

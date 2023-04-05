@@ -1,7 +1,6 @@
 package;
 
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxSpriteGroup;
 import flixel.system.FlxSound;
 import flixel.util.FlxTimer;
@@ -26,12 +25,10 @@ class Grand9K extends FlxSpriteGroup {
         var lastSprite: FlxSprite = null;
         var lines = value.split("\n");
         for (i in 0...lines.length) {
-            for (character in lines[i].split("")) {
-                lastSprite = new FlxSprite(lastSprite != null ? lastSprite.x + lastSprite.width - x + 10 * size : 0, i * 90 * size);
-                if (character == " ")
-                    lastSprite.makeGraphic(10, 70, 0x00000000);
-                else
-                    lastSprite.loadGraphic("assets/images/grand9k/" + StringTools.hex(character.charCodeAt(0)).toLowerCase() + ".png");
+            var line = lines[i];
+            for (j in 0...line.length) {
+                lastSprite = new FlxSprite(lastSprite != null ? lastSprite.x + lastSprite.width - x + 10 * size : 0, i * 90 * size,
+                    "assets/images/grand9k/" + StringTools.hex(line.charCodeAt(j)).toLowerCase() + ".png");
                 lastSprite.antialiasing = Game.Options.antialiasing;
                 lastSprite.setGraphicSize(Std.int(lastSprite.width * size));
                 lastSprite.updateHitbox();

@@ -6,7 +6,7 @@ import openfl.display.Bitmap;
 import openfl.display.Sprite;
 
 class Game {
-    public static var version: String = "v1.1.1";
+    public static var version: String = "v1.2.0";
     public static var outdated: Bool = false;
 
     public static function initSave() {
@@ -126,7 +126,7 @@ class Options {
     static function set_fpsCounter(value: Bool) {
         FlxG.save.data.fpsCounter = value;
         if (Main.fpsCounter != null)
-        Main.fpsCounter.visible = value;
+            Main.fpsCounter.visible = value;
         FlxG.save.flush();
         return value;
     }
@@ -177,15 +177,9 @@ class Options {
     }
 
     static function set_fpsCap(value: Int) {
-        var lessThan = value < FlxG.save.data.fpsCap;
         FlxG.save.data.fpsCap = value;
-        if (lessThan) {
-            FlxG.drawFramerate = value;
-            FlxG.updateFramerate = value;
-        } else {
-            FlxG.updateFramerate = value;
-            FlxG.drawFramerate = value;
-        }
+        FlxG.drawFramerate = value;
+        FlxG.updateFramerate = value;
         FlxG.save.flush();
         return value;
     }
@@ -200,16 +194,13 @@ class Version extends Sprite {
         y = Y;
 
         var lastSprite: FlxSprite = null;
-        for (character in (Game.version + (Game.outdated ? " O" : "")).split("")) {
-            lastSprite = new FlxSprite(lastSprite != null ? lastSprite.x + lastSprite.width + 5 : 0);
-            if (character == " ")
-                lastSprite.makeGraphic(5, 35, 0x00000000);
-            else
-                lastSprite.loadGraphic("assets/images/version/" + StringTools.hex(character.charCodeAt(0)).toLowerCase() + ".png");
+        var text = Game.version + (Game.outdated ? " (Outdated)" : "");
+        for (i in 0...text.length) {
+            lastSprite = new FlxSprite(lastSprite != null ? lastSprite.x + lastSprite.width + 5 : 0, 0,
+                "assets/images/grand9k/" + StringTools.hex(text.charCodeAt(i)).toLowerCase() + ".png");
             lastSprite.antialiasing = Game.Options.antialiasing;
             var bitmap = new Bitmap(lastSprite.pixels);
             bitmap.x = lastSprite.x;
-            bitmap.y = lastSprite.y;
             addChild(bitmap);
         }
     }

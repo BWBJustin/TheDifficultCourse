@@ -21,7 +21,7 @@ class MenuState extends FlxState {
         super.update(elapsed);
 
         var oldBeat = beat;
-        beat = Math.floor(FlxG.sound.music.time / (12 / 35 * 1000));
+        beat = Math.floor(FlxG.sound.music.time * 35 / 12000);
 
         if (oldBeat != beat) {
             Main.worm1.move();
@@ -46,11 +46,6 @@ class MenuState extends FlxState {
         if (curSelected >= menuItems.length)
             curSelected = 0;
 
-        menuItems.forEach(menuItem -> {
-            if (menuItem.ID == menuItems.members[curSelected].ID)
-                menuItem.color = 0xFFFFFFFF;
-            else
-                menuItem.color = 0xFF808080;
-        });
+        menuItems.forEach(menuItem -> menuItem.color = menuItem.ID == menuItems.members[curSelected].ID ? 0xFFFFFFFF : 0xFF808080);
     }
 }

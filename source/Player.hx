@@ -9,8 +9,7 @@ class Player extends FlxSprite {
     public var ending: Bool = false;
 
     public function new(X: Float, Y: Float) {
-        super(X, Y);
-        loadGraphic(AssetPaths.player__png);
+        super(X, Y, AssetPaths.player__png);
 
         antialiasing = Game.Options.antialiasing;
     }

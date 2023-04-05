@@ -17,9 +17,9 @@ class Main extends Sprite
         super();
         instance = this;
         
-        addChild(new FlxGame(1280, 720, StartupState, 1, 60, 60, true));
+        addChild(new FlxGame(1280, 720, StartupState, 60, 60, true));
 
-        worm1 = new Worm();
+        worm1 = new Worm(0, 0, false);
         addChild(worm1);
         worm2 = new Worm(1120, 700, true);
         addChild(worm2);
@@ -30,7 +30,7 @@ class Main extends Sprite
     }
 
     public static function resetWorms() {
-        worm1 = new Worm();
+        worm1 = new Worm(0, 0, false);
         instance.addChild(worm1);
         worm2 = new Worm(1120, 700, true);
         instance.addChild(worm2);

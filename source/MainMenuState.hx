@@ -19,7 +19,7 @@ class MainMenuState extends MenuState
         } else
             Main.version.visible = true;
 
-        var logo = new FlxSprite(0, 26).loadGraphic(AssetPaths.logo__png);
+        var logo = new FlxSprite(0, 26, AssetPaths.logo__png);
         logo.antialiasing = Game.Options.antialiasing;
         logo.screenCenter(X);
         add(logo);

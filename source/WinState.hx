@@ -29,7 +29,7 @@ class WinState extends FlxState {
         timeText.screenCenter(X);
         add(timeText);
 
-        prize = new FlxSprite(0, 350).loadGraphic(AssetPaths.gift__png);
+        prize = new FlxSprite(0, 350, AssetPaths.gift__png);
         prize.antialiasing = Game.Options.antialiasing;
         prize.visible = false;
         prize.screenCenter(X);

@@ -22,7 +22,7 @@ class DialogueBox extends FlxSpriteGroup {
             add(new FlxSprite().makeGraphic(1280, 720, 0x99FFFFFF));
 
         var speaking = Json.parse(Assets.getText("assets/data/characters/" + data.speaking + ".json"));
-        portrait = new FlxSprite(speaking.x, speaking.y).loadGraphic("assets/images/" + speaking.image + ".png");
+        portrait = new FlxSprite(speaking.x, speaking.y, "assets/images/" + speaking.image + ".png");
         portrait.antialiasing = Game.Options.antialiasing;
         if (!event)
             add(portrait);

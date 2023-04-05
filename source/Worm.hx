@@ -3,27 +3,34 @@ package;
 // When I fully completed PlayState, I debated whether I make this or not. I thought
 // it would look cool, so I did. I was going to use an image, but I thought adding
 // squares instead would make it more efficient and wouldn't take a lot of file space.
-// "This is a long and sloppy file" - HaxeFlixel team
+// "It is a long and sloppy file" - HaxeFlixel team
 
-import flixel.FlxSprite;
-import flixel.util.FlxColor;
+import openfl.display.BitmapData;
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
 
 class Worm extends Sprite {
+    public static var colors = [
+        0xFFFF0000,
+        0xFFFFA500,
+        0xFFFFFF00,
+        0xFF00FF00,
+        0xFF008000,
+        0xFF00FFFF,
+        0xFF0000FF,
+        0xFF800080
+    ];
+
     public function new(X: Float = 0, Y: Float = 0, Flipped: Bool = false) {
         super();
         x = X;
         y = Y;
 
-        addChild(new WormSquare(Flipped ?   0 : 140, 0, 0xFFFF0000));
-        addChild(new WormSquare(Flipped ?  20 : 120, 0, 0xFFFFA500));
-        addChild(new WormSquare(Flipped ?  40 : 100, 0, 0xFFFFFF00));
-        addChild(new WormSquare(Flipped ?  60 :  80, 0, 0xFF00FF00));
-        addChild(new WormSquare(Flipped ?  80 :  60, 0, 0xFF008000));
-        addChild(new WormSquare(Flipped ? 100 :  40, 0, 0xFF00FFFF));
-        addChild(new WormSquare(Flipped ? 120 :  20, 0, 0xFF0000FF));
-        addChild(new WormSquare(Flipped ? 140 :   0, 0, 0xFF800080));
+        for (i in 0...colors.length) {
+            var square = new Bitmap(new BitmapData(20, 20, false, colors[i]));
+            square.x = (i ^ (Flipped ? 0 : colors.length - 1)) * 20;
+            addChild(square);
+        }
     }
 
     public function move() {
@@ -55,13 +62,5 @@ class Worm extends Sprite {
             else if (squareY == 700)
                 square.x -= 20;
         }
-    }
-}
-
-class WormSquare extends Bitmap {
-    public function new(X: Float = 0, Y: Float = 0, Color: FlxColor = 0xFF000000) {
-        super(new FlxSprite().makeGraphic(20, 20, Color).pixels);
-        x = X;
-        y = Y;
     }
 }

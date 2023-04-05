@@ -47,7 +47,7 @@ class PlayState extends FlxState {
         bg = new FlxSprite(-1400).makeGraphic(1280, 720, 0xFF404040);
         add(bg);
 
-        end = new FlxSprite(-280).loadGraphic(AssetPaths.end__png);
+        end = new FlxSprite(-280, 0, AssetPaths.end__png);
         end.antialiasing = Game.Options.antialiasing;
         add(end);
 
@@ -68,13 +68,13 @@ class PlayState extends FlxState {
         }
 
         for (circle in level.circles) {
-            var circleSprite = new FlxSprite(circle.x, circle.y).loadGraphic("assets/images/game/circles/circle" + circle.w + ".png");
+            var circleSprite = new FlxSprite(circle.x, circle.y, "assets/images/game/circles/circle" + circle.w + ".png");
             circleSprite.antialiasing = Game.Options.antialiasing;
             obstacles.add(circleSprite);
         }
 
         for (saw in level.saws) {
-            var sawSprite = new FlxSprite(saw.x, saw.y1).loadGraphic(AssetPaths.saw__png);
+            var sawSprite = new FlxSprite(saw.x, saw.y1, AssetPaths.saw__png);
             sawSprite.antialiasing = Game.Options.antialiasing;
             FlxTween.tween(sawSprite, { angle: 360 }, 1, { type: 2 });
             FlxTween.tween(sawSprite, { y: saw.y2 }, 1, { type: 4 });
@@ -83,7 +83,7 @@ class PlayState extends FlxState {
 
         if (levelIndex == 3) {
             for (i in 0...5) {
-                var lennySaw = new FlxSprite(0, i * 145).loadGraphic(AssetPaths.lenny_saw__png);
+                var lennySaw = new FlxSprite(0, i * 145, AssetPaths.lenny_saw__png);
                 lennySaw.antialiasing = Game.Options.antialiasing;
                 obstacles.add(lennySaw);
             }
@@ -96,7 +96,7 @@ class PlayState extends FlxState {
         bgCover.alpha = 0;
         add(bgCover);
 
-        timmy = new FlxSprite(600, 199).loadGraphic(AssetPaths.timmy__png);
+        timmy = new FlxSprite(600, 199, AssetPaths.timmy__png);
         timmy.antialiasing = Game.Options.antialiasing;
         timmy.alpha = 0;
         add(timmy);
