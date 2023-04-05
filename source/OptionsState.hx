@@ -21,9 +21,9 @@ class OptionsState extends MenuState
         for (i in 0...menuItemNames.length) {
             var menuItem = new Grand9K(0, i * 90 + 170);
             var menuItemName = menuItemNames[i];
-            menuItem.text = menuItemName[0] + menuItemName[2] ?
+            menuItem.text = menuItemName[0] + (menuItemName[2] ?
                 Std.string(Reflect.getProperty(Game.Options, menuItemName[1])) :
-                cast(Reflect.getProperty(Game.Options, menuItemName[1]), Bool) ? "On" : "Off";
+                cast(Reflect.getProperty(Game.Options, menuItemName[1]), Bool) ? "On" : "Off");
             menuItem.screenCenter(X);
             menuItems.add(menuItem);
         }
